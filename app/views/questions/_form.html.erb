@@ -1,26 +1,28 @@
-<%= form_with model: @question do |form| %>
-  <% if @question.errors.any? %>
+<div class="form-container">
+  <%= form_with model: @question do |form| %>
+    <% if @question.errors.any? %>
+      <div class="error-messages">
+        <ul>
+          <% @question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div>
-      <ul>
-        <% @question.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :content %><br>
+      <%= form.text_area :content %>
+    </div>
+    <div>
+      <%= form.submit class: "button" %>
     </div>
   <% end %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </div>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
